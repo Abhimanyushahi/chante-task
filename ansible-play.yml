@@ -28,7 +28,8 @@
       ansible.builtin.user:
         name: ftpuser
         comment: ftpuser
-        password: ftpuserpwd
+        password: "{{ 'ftpusepwd' | password_hash('sha512') }}"
+        update_password: always
 # Modify FTP server configuration to allow ftpuser access.
     - name: Create if not present
       file:
