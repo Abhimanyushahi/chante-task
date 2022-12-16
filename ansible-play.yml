@@ -35,8 +35,8 @@
         path: /srv/ftp
         state: directory
         mode: 0755
-        owner: chante
-        group: chante
+        owner: ftpuser
+        group: ftpuser
 
     - name: Modify FTP configuation
       lineinfile:
@@ -52,7 +52,7 @@
         - { regexp: local_enable, line: local_enable=YES }
         - { regexp: write_enable=NO, line: write_enable=YES }
 
-    - name: Ansible delete file glob
+    - name: Uncommenting 
       replace:
         path: /etc/vsftpd.conf
         regexp: '^#(.*write_enable=YES.*)'
